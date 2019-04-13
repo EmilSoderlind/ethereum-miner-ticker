@@ -57,6 +57,7 @@ def startFeed():
         print("Exiting program!")
         pass
     except:
+        print("Failed to parse, trying again.")
         startFeed()
         pass
 
