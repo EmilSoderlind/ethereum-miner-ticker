@@ -95,9 +95,5 @@ def startFeed():
         #show_message(device, "1 Eth = 954 $", fill="white", font=proportional(LCD_FONT),scroll_delay=0.05)
 
 if __name__ == "__main__":
-    try:
-        print("-> Starting program <-")
-        startFeed()
-    except:
-        print("ERROR!")
-        pass
+    print("-> Starting program <-")
+    startFeed()
