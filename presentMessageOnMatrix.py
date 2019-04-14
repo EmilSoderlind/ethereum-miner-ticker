@@ -3,7 +3,6 @@
 # Copyright (c) 2017-18 Richard Hull and contributors
 # See LICENSE.rst for details.
 
-from datetime import timedelta
 import os
 import time as timeSpez
 import argparse
@@ -19,13 +18,6 @@ from luma.core.legacy import text
 from luma.core.legacy import text, show_message
 from luma.core.legacy.font import proportional, CP437_FONT, TINY_FONT, SINCLAIR_FONT, LCD_FONT
 
-
-def utc_to_local(dt):
-    if timeSpez.localtime().tm_isdst:
-        return dt - datetime.timedelta(seconds=timeSpez.altzone)
-    else:
-        return dt - datetime.timedelta(seconds=timeSpez.timezone)
-
 def getNumberOfLastDateTimes(n):
     print("Parsing KONRAD-api")
 
@@ -39,7 +31,7 @@ def getNumberOfLastDateTimes(n):
     datetimeList = []
 
     for i in range(jsonLen-averageSize, jsonLen):
-        currentDate = utc_to_local(dateutil.parser.parse(json[i]["time"]))
+        currentDate = dateutil.parser.parse(json[i]["time"])
         datetimeList.append(currentDate)
     return datetimeList
 
@@ -65,7 +57,7 @@ def getPresentableStringOfLast(averageSize):
 
     # Insert cool function
 
-    return str(hours) + ":" + str(minutes)
+    return str(hours + 1) + ":" + str(minutes)
 
 def startFeed():
     # create matrix device
