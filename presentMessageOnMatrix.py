@@ -86,9 +86,6 @@ def startFeed():
     except KeyboardInterrupt:
         print("Exiting program!")
         pass
-    except:
-        print("Failed to parse, trying again.")
-        pass
 
     
     #while(True):
