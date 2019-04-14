@@ -4,7 +4,7 @@
 # See LICENSE.rst for details.
 
 import os
-import time
+import time as timeSpez
 import argparse
 from datetime import datetime, date, time
 import json
@@ -81,7 +81,7 @@ def startFeed():
                 #text(draw, (0, 1), "73.93", fill="white", font=proportional(LCD_FONT))
             
             print("Sleep for 120 sec")
-            time.sleep(120)
+            timeSpez.sleep(120)
             print("Parse again!")
     except KeyboardInterrupt:
         print("Exiting program!")
