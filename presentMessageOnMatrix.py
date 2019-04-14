@@ -31,14 +31,17 @@ def startFeed():
     try:
         while(True):
             
-            #print("Parsing ethermine-api")
-            #url = "https://api.ethermine.org/miner/a4aBfc14202339cd55BFB94BD23cf07301443C24/currentStats"
-            #r = requests.get(url)
-            #print(r.json()["data"])
-            #usdPerMin = float(r.json()["data"]["usdPerMin"])
-            #print("usdPerMin: ",usdPerMin)
-            
-            printMessage = "hejsan"
+            print("Parsing KONRAD-api")
+            url = "http://94.255.156.221:1338"
+            r = requests.get(url)
+            json = r.json()["mailRecievedTable"]
+            jsonLen = len(json)
+            print(json)
+            print(jsonLen)
+
+            # Insert cool function
+
+            printMessage = str(jsonLen)
             with canvas(device) as draw:
                 #draw.rectangle(device.bounding_box, outline="white")
                 text(draw, (0, 1), printMessage, fill="white", font=proportional(CP437_FONT))
