@@ -20,10 +20,10 @@ from luma.core.legacy.font import proportional, CP437_FONT, TINY_FONT, SINCLAIR_
 
 
 def utc_to_local(dt):
-    if time.localtime().tm_isdst:
-        return dt - datetime.timedelta(seconds=time.altzone)
+    if timeSpez.localtime().tm_isdst:
+        return dt - datetime.timedelta(seconds=timeSpez.altzone)
     else:
-        return dt - datetime.timedelta(seconds=time.timezone)
+        return dt - datetime.timedelta(seconds=timeSpez.timezone)
 
 def getNumberOfLastDateTimes(n):
     print("Parsing KONRAD-api")
