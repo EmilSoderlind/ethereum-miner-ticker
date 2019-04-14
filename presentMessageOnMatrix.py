@@ -88,7 +88,6 @@ def startFeed():
         pass
     except:
         print("Failed to parse, trying again.")
-        startFeed()
         pass
 
     
