@@ -57,7 +57,7 @@ def getPresentableStringOfLast(averageSize):
 
     # Insert cool function
 
-    return str(hours + 1) + ":" + str(minutes)
+    return str(hours + 2) + ":" + str(minutes)
 
 def startFeed():
     # create matrix device
@@ -72,7 +72,7 @@ def startFeed():
     try:
         while(True):
             
-            printMessage = getPresentableStringOfLast(1)
+            printMessage = getPresentableStringOfLast(10)
             with canvas(device) as draw:
                 #draw.rectangle(device.bounding_box, outline="white")
                 text(draw, (0, 1), printMessage, fill="white", font=proportional(CP437_FONT))
