@@ -19,6 +19,12 @@ from luma.core.legacy import text, show_message
 from luma.core.legacy.font import proportional, CP437_FONT, TINY_FONT, SINCLAIR_FONT, LCD_FONT
 
 
+def utc_to_local(dt):
+    if time.localtime().tm_isdst:
+        return dt - datetime.timedelta(seconds=time.altzone)
+    else:
+        return dt - datetime.timedelta(seconds=time.timezone)
+
 def getNumberOfLastDateTimes(n):
     print("Parsing KONRAD-api")
 
@@ -32,7 +38,7 @@ def getNumberOfLastDateTimes(n):
     datetimeList = []
 
     for i in range(jsonLen-averageSize, jsonLen):
-        currentDate = dateutil.parser.parse(json[i]["time"])
+        currentDate = utc_to_local(dateutil.parser.parse(json[i]["time"]))
         datetimeList.append(currentDate)
     return datetimeList
 
@@ -73,7 +79,7 @@ def startFeed():
     try:
         while(True):
             
-            printMessage = getPresentableStringOfLast(25)
+            printMessage = getPresentableStringOfLast(1)
             with canvas(device) as draw:
                 #draw.rectangle(device.bounding_box, outline="white")
                 text(draw, (0, 1), printMessage, fill="white", font=proportional(CP437_FONT))
