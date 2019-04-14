@@ -3,6 +3,7 @@
 # Copyright (c) 2017-18 Richard Hull and contributors
 # See LICENSE.rst for details.
 
+from datetime import timedelta
 import os
 import time as timeSpez
 import argparse
@@ -10,7 +11,6 @@ from datetime import datetime, date, time
 import json
 import requests
 import dateutil.parser
-from datetime import timedelta
 
 from luma.led_matrix.device import max7219
 from luma.core.interface.serial import spi, noop
