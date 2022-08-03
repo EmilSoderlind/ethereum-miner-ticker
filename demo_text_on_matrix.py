@@ -9,7 +9,6 @@ import argparse
 from datetime import date
 import json
 import requests
-from currency_converter import CurrencyConverter
 
 from luma.led_matrix.device import max7219
 from luma.core.interface.serial import spi, noop
