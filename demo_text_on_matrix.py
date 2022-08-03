@@ -44,7 +44,7 @@ def startFeed():
             #sekPerDay = round(sekPerMin*60*24,2)
             #print("sekPerDay: ", sekPerDay)
             
-            printMessage = "Hej!"
+            printMessage = "342 kr"
             with canvas(device) as draw:
                 #draw.rectangle(device.bounding_box, outline="white")
                 text(draw, (0, 1), printMessage, fill="white", font=proportional(CP437_FONT))
