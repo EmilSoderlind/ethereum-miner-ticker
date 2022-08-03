@@ -38,13 +38,12 @@ def startFeed():
             
             #print("Parsing ethermine-api - DONE")
             #print("Parsing CurrencyConverter-api")
-            #c = CurrencyConverter()
             #sekPerMin = float(c.convert(usdPerMin, 'USD', 'SEK'))
             #print("Parsing CurrencyConverter-api - DONE")
             #sekPerDay = round(sekPerMin*60*24,2)
             #print("sekPerDay: ", sekPerDay)
             
-            printMessage = "342 kr"
+            printMessage = "3.43"
             with canvas(device) as draw:
                 #draw.rectangle(device.bounding_box, outline="white")
                 text(draw, (0, 1), printMessage, fill="white", font=proportional(CP437_FONT))
