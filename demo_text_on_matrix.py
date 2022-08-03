@@ -17,6 +17,8 @@ from luma.core.legacy import text
 from luma.core.legacy import text, show_message
 from luma.core.legacy.font import proportional, CP437_FONT, TINY_FONT, SINCLAIR_FONT, LCD_FONT
 
+from qlient.http import HTTPClient, GraphQLResponse
+
 def startFeed():
     # create matrix device
     serial = spi(port=0, device=0, gpio=noop())
@@ -43,7 +45,22 @@ def startFeed():
             #sekPerDay = round(sekPerMin*60*24,2)
             #print("sekPerDay: ", sekPerDay)
             
-            printMessage = "3.43"
+
+            client = HTTPClient("https://swapi-graphql.netlify.app/.netlify/functions/index")
+
+            res: GraphQLResponse = client.query.film(
+                # swapi graphql input fields
+                id="ZmlsbXM6MQ==",
+
+                # qlient specific
+                _fields=["id", "title", "episodeID"]
+            )
+
+            print(res.request.query)  # query film($id: ID) { film(id: $id) { id title episodeID } }
+            print(res.request.variables)  # {'id': 'ZmlsbXM6MQ=='}
+
+
+            printMessage = res.data.film.id
             with canvas(device) as draw:
                 #draw.rectangle(device.bounding_box, outline="white")
                 text(draw, (0, 1), printMessage, fill="white", font=proportional(CP437_FONT))
